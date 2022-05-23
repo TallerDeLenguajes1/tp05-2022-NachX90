@@ -1,0 +1,18 @@
+﻿Console.WriteLine("CALCULADORA V2.0");
+float numero1, numero2;
+Console.Write("\nEscriba un número: ");
+numero1 = float.Parse(Console.ReadLine());
+Console.WriteLine($"\tEl valor abosluto de {numero1} es:\t" + Math.Abs(numero1));
+Console.WriteLine($"\tEl cuadrado de {numero1} es:\t\t" + Math.Pow(numero1, 2));
+Console.WriteLine($"\tLa raiz cuadrada de {numero1} es:\t" + Math.Sqrt(numero1));
+Console.WriteLine($"\tEl seno de {numero1} es:\t\t" + Math.Sin(numero1));
+Console.WriteLine($"\tEl coseno de {numero1} es:\t\t" + Math.Cos(numero1));
+Console.WriteLine($"\tLa parte entera de {numero1} es:\t" + Math.Truncate(numero1));
+Console.WriteLine("\nEscriba dos números:");
+Console.Write("\tPrimer número: ");
+numero1 = float.Parse(Console.ReadLine());
+Console.Write("\tSegundo número: ");
+numero2 = float.Parse(Console.ReadLine());
+Console.WriteLine($"\t\tEl máximo entre {numero1} y {numero2} es:\t" + Math.Max(numero1, numero2));
+Console.WriteLine($"\t\tEl mínimo entre {numero1} y {numero2} es:\t" + Math.Min(numero1, numero2));
+Console.WriteLine("\nGracias por utilizar. Vuelva pronto.");
