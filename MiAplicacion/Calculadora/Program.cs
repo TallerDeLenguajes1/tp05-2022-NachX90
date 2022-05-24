@@ -1,65 +1,44 @@
-﻿Console.WriteLine("CALCULADORA V2.1");
-int opcion, seguir = 0;
-float numero1 = 0, numero2 = 0;
+﻿using System.Data;
+string cadena1, cadena2;
+
+Console.WriteLine("EJERCICIO 4");
 do
 {
-    do
-    {
-        Console.WriteLine("\n\t1: Suma\n\t2: Resta\n\t3: Producto\n\t4: Cociente\n\t5: Omitir operación");
-        Console.Write("Ingrese la operación a realizar: ");
-        opcion = int.Parse(Console.ReadLine());
-    } while (opcion < 1 && opcion > 5);
-    if (opcion != 5)
-    {
-        Console.Write("Escriba el primer numero: ");
-        numero1 = float.Parse(Console.ReadLine());
-        Console.Write("Escriba el segundo numero: ");
-        numero2 = float.Parse(Console.ReadLine());
-    }
-    switch (opcion)
-    {
-        case 1:
-            Console.WriteLine($"\nEl resultado de la suma {numero1} + {numero2} es: " + (numero1 + numero2));
-            break;
-        case 2:
-            Console.WriteLine($"\nEl resultado de la resta {numero1} - {numero2} es: " + (numero1 - numero2));
-            break;
-        case 3:
-            Console.WriteLine($"\nEl resultado del producto {numero1} * {numero2} es: " + (numero1 * numero2));
-            break;
-        case 4:
-            if (numero2 == 0)
-            {
-                Console.WriteLine("\nIndefinido. No se puede dividir en cero");
-            }
-            else
-            {
-                Console.WriteLine($"\nEl resultado del cociente {numero1} / {numero2} es: " + (numero1 / numero2));
-            }
-            break;
-        default:
-            break;
-    }
-    if (opcion != 5)
-    {
-        Console.Write("\nDesea hacer otra operacion? (presione 1 para si, cualquier otro número para no): ");
-        seguir = int.Parse(Console.ReadLine());
-    }
-} while (seguir == 1);
-
-Console.Write("\nEscriba un número: ");
-numero1 = float.Parse(Console.ReadLine());
-Console.WriteLine($"\tEl valor abosluto de {numero1} es:\t" + Math.Abs(numero1));
-Console.WriteLine($"\tEl cuadrado de {numero1} es:\t\t" + Math.Pow(numero1, 2));
-Console.WriteLine($"\tLa raiz cuadrada de {numero1} es:\t" + Math.Sqrt(numero1));
-Console.WriteLine($"\tEl seno de {numero1} es:\t\t" + Math.Sin(numero1));
-Console.WriteLine($"\tEl coseno de {numero1} es:\t\t" + Math.Cos(numero1));
-Console.WriteLine($"\tLa parte entera de {numero1} es:\t" + Math.Truncate(numero1));
-Console.WriteLine("\nEscriba dos números:");
-Console.Write("\tPrimer número: ");
-numero1 = float.Parse(Console.ReadLine());
-Console.Write("\tSegundo número: ");
-numero2 = float.Parse(Console.ReadLine());
-Console.WriteLine($"\t\tEl máximo entre {numero1} y {numero2} es:\t" + Math.Max(numero1, numero2));
-Console.WriteLine($"\t\tEl mínimo entre {numero1} y {numero2} es:\t" + Math.Min(numero1, numero2));
+    Console.Write("\nIngrese una oración (al menos 10 caracteres): ");
+    cadena1 = Console.ReadLine();
+} while (cadena1.Length < 10);
+do
+{
+    Console.Write("Ingrese otra oración (al menos 10 caracteres): ");
+    cadena2 = Console.ReadLine();
+} while (cadena2.Length < 10);
+Console.WriteLine("\nEl segundo caracter de la primera oración es \"" + cadena1[1] + "\" y el sexto es \"" + cadena1[5] + "\"");
+Console.WriteLine("La longitud de la primera oración es: " + cadena1.Length);
+Console.WriteLine("La oración 1 concatenada con la oración 2 queda: " + string.Concat(cadena1, cadena2));
+Console.WriteLine("La subcadena extraída de la primera oración es: \"" + cadena1.Substring(5) + "\"");
+//La operación binaria representada con texto está hecha en el problema 2 original del TP.
+Console.WriteLine("Los caracteres de la primera oración son:");
+foreach (char caracter in cadena1)
+{
+    Console.WriteLine("\t" + caracter);
+}
+Console.WriteLine("La primera oración contiene la palabra \"hola\"?: " + cadena1.Contains("hola"));
+Console.WriteLine("La primera oración en mayúsculas es: " + cadena1.ToUpper());
+Console.WriteLine("La primera oración en minúsculas es: " + cadena1.ToLower());
+Console.WriteLine("Las oraciones comparadas devuelve: " + string.Compare(cadena1, cadena2));
+do
+{
+    Console.Write("\nIngrese una oración que contenga al menos 1 \"+\": ");
+    cadena1 = Console.ReadLine();
+} while (!cadena1.Contains("+"));
+string[] arreglo = cadena1.Split("+");
+Console.WriteLine("Las partes de la oración separada son:");
+foreach (string parte in arreglo)
+{
+    Console.WriteLine("\t" + parte);
+}
+Console.Write("Escriba una ecuación binaria con \"+\", \"-\", \"*\" ó \"/\": ");
+cadena1 = Console.ReadLine();
+float resultado = (float)Convert.ToDouble(new DataTable().Compute(cadena1, null));
+Console.WriteLine($"El resultado de {cadena1} es: {resultado}");
 Console.WriteLine("\nGracias por utilizar. Vuelva pronto.");
